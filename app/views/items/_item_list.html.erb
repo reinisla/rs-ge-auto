@@ -1,0 +1,40 @@
+<table class="table">
+  <thead>  
+    <tr>
+      <th>Icon</th>
+      <th>Item Id.</th>
+      <th>Name</th>
+      <th>Stats</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% items.each do |item| %>
+      <tr>
+        <% if item.icon.present? %>
+          <td><%= image_tag item.icon %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= item.item_id %></td>
+        <td><b><%= item.name %></b></td>
+        <td>
+          <ul>
+            <li>Current: <%= item.current_change %></li>
+            <li>Today: <%= item.today_change %></li>
+            <li>30 day: <%= item.day30_change %></li>
+            <li>90 day: <%= item.day90_change %></li>
+            <li>180 day: <%= item.day180_change %></li>
+            </br>
+            <li>buy_average: <%= item.buy_average %></li>
+            <li>buy_quantity: <%= item.buy_quantity %></li>
+            <li>sell_average: <%= item.sell_average %></li>
+            <li>sell_quantity: <%= item.sell_quantity %></li>
+            <li>overall_average: <%= item.overall_average %></li>
+            <li>overall_quantity: <%= item.overall_quantity %></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

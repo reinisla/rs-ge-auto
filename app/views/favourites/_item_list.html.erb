@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>  
+    <tr>
+      <th>Icon</th>
+      <th>Item Id.</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% items.each do |item| %>
+      <tr>
+        <% if item.icon.present? %>
+          <td><%= image_tag item.icon %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= item.item_id %></td>
+        <td><b><%= item.name %></b></td>
+        <td>
+          <%= 
+            link_to 'Remove from favourites', 
+            update_favourite_favourites_path(
+              item: { item_id: item.item_id }, 
+              remove: true
+            ), 
+            method: :put, 
+            remote: true 
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

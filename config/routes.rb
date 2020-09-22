@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
-  resources :items
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  mount Sidekiq::Web => '/sidekiq'
+    
+  resources :items, only: :index do
+    collection do
+      post :update_summary
+      post :update_item_changes
+    end
+  end
+
+  resources :favourites do 
+    collection do
+      post :update_favourite
+    end
+  end
 end

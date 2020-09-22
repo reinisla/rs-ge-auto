@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="d-inline-flex my-5">
+    <%= form_for :item, url: update_summary_items_path, method: :post, remote: true do |f| %>
+      <%= f.submit "Reload Summary", class: "mr-3" %>
+    <% end %>
+
+    <%= form_for :item, url: update_item_changes_items_path, method: :post, remote: true do |f| %>
+      <%= f.submit "Reload Prices", class: "mr-5" %>
+    <% end %>
+
+    <%= link_to 'Favourites', favourites_path %>
+  </div>
+
+  <div class="item_list">
+    <%= render partial: 'item_list', locals: { items: @items } %>
+  </div>
+</div>
