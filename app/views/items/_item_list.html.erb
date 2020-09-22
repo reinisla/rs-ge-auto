@@ -19,9 +19,12 @@
         <td><%= item.item_id %></td>
         <td><b><%= item.name %></b></td>
         <td>
+          <%= 
+            line_chart({"Current": item.current_price, "Today": item.today_price})
+          %>
           <ul>
-            <li>Current: <%= item.current_change %></li>
-            <li>Today: <%= item.today_change %></li>
+            <li>Current status: <%= item.current_change["trend"] %></li>
+            <li>Today status: <%= item.today_change["trend"] %></li>
             <li>30 day: <%= item.day30_change %></li>
             <li>90 day: <%= item.day90_change %></li>
             <li>180 day: <%= item.day180_change %></li>

@@ -21,6 +21,8 @@ gem 'httparty'
 # background jobs
 gem 'sidekiq'
 
+gem "chartkick"
+
 gem 'bootstrap', '~> 5.0.0.alpha1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
