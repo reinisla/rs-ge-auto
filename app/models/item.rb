@@ -17,6 +17,18 @@ class Item < ApplicationRecord
     convert_money(current_change["price"]) + convert_money(today_change["price"])
   end
 
+  def converted30
+    convert_percentage(day30_change["change"])
+  end
+
+  def converted90
+    convert_percentage(day90_change["change"])
+  end
+
+  def converted180
+    convert_percentage(day180_change["change"])
+  end
+
   private
 
   def convert_money(money_value)
@@ -28,5 +40,15 @@ class Item < ApplicationRecord
     return money_value.to_f unless multiplier
 
     (money_value.to_d * multiplier).to_i.to_f
+  end
+
+  def convert_percentage(percentage_value)
+    percentage_value = percentage_value.to_s.delete('%')
+
+    if percentage_value.include?("+")
+      percentage_value.to_s.delete('+')
+    end
+
+    percentage_value
   end
 end

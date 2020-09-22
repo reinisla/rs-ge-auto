@@ -22,6 +22,9 @@
           <%= 
             line_chart({"Current": item.current_price, "Today": item.today_price})
           %>
+          <%= 
+            line_chart({"180day": item.converted180, "90day": item.converted90, "30day": item.converted30})
+          %>
           <ul>
             <li>Current status: <%= item.current_change["trend"] %></li>
             <li>Today status: <%= item.today_change["trend"] %></li>
